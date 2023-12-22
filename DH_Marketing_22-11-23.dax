@@ -1,0 +1,130 @@
+﻿DEFINE 
+---- MODEL MEASURES BEGIN ----
+MEASURE 'DAX'[% clientes carne] = 
+[Total Clientes Carne]/[Total Clientes]
+MEASURE 'DAX'[% clientes CATÁLOGO] = 
+[Total Clientes CATÁLOGO]/[Total Clientes]
+MEASURE 'DAX'[% clientes descuento] = 
+[Total Clientes Descuento]/[Total Clientes]
+MEASURE 'DAX'[% clientes dulces] = 
+[Total Clientes Dulces]/[Total Clientes]
+MEASURE 'DAX'[% clientes fruta] = 
+[Total Clientes Fruta]/[Total Clientes]
+MEASURE 'DAX'[% clientes pescado] = 
+[Total Clientes Pescado]/[Total Clientes]
+MEASURE 'DAX'[% clientes premium] = 
+[Total Clientes Premium]/[Total Clientes]
+MEASURE 'DAX'[% clientes TIENDA] = 
+[Total Clientes TIENDA]/[Total Clientes]
+MEASURE 'DAX'[% clientes vino] = 
+[Total Clientes Vino]/[Total Clientes]
+MEASURE 'DAX'[% clientes WEB] = 
+[Total Clientes WEB]/[Total Clientes]
+MEASURE 'DAX'[% Compras Descuento] = 
+[Total Compras descuento] / [Total Compras Productos]
+MEASURE 'DAX'[% Compras Premium] = 
+[Total Compras Premium] / [Total Compras Productos]
+MEASURE 'DAX'[Promedio compras cliente] = 
+[Total Compras Productos]/[Total Clientes]
+MEASURE 'DAX'[Promedio días ultima compra] = 
+AVERAGE ( FACT_DatosMarketing[Días_UltimaCompra] )
+MEASURE 'DAX'[Promedio edad clientes] = 
+AVERAGE ( DIM_Edad[Edad_Actual] )
+MEASURE 'DAX'[Promedio ingresos clientes] = 
+AVERAGE ( FACT_DatosMarketing[Ingresos] )
+MEASURE 'DAX'[Total Campaña Final] = 
+SUM ( 'FACT_DatosMarketing'[Aceptacion_CampañaFinal] )
+MEASURE 'DAX'[Total Campaña1] = 
+SUM('FACT_DatosMarketing'[Aceptacion_Campaña1])
+MEASURE 'DAX'[Total Campaña2] = 
+SUM('FACT_DatosMarketing'[Aceptacion_Campaña2])
+MEASURE 'DAX'[Total Campaña3] = 
+SUM('FACT_DatosMarketing'[Aceptacion_Campaña3])
+MEASURE 'DAX'[Total Campaña4] = 
+SUM(FACT_DatosMarketing[Aceptacion_Campaña4])
+MEASURE 'DAX'[Total Campaña5] = 
+SUM('FACT_DatosMarketing'[Aceptacion_Campaña5])
+MEASURE 'DAX'[Total campañas aceptadas] = 
+SUM(FACT_DatosMarketing[Total_Campañas_Aceptadas])
+MEASURE 'DAX'[Total Clientes] = 
+COUNTROWS ( FACT_DatosMarketing )
+MEASURE 'DAX'[Total Clientes Carne] = 
+CALCULATE (
+    COUNT ( FACT_DatosMarketing[Compras_Carne] ),
+    FILTER ( FACT_DatosMarketing, FACT_DatosMarketing[Compras_Carne] > 0 )
+)
+MEASURE 'DAX'[Total Clientes CATÁLOGO] = 
+CALCULATE (
+    COUNT ( FACT_DatosMarketing[Compras_CATÁLOGO] ),
+    FILTER ( FACT_DatosMarketing, FACT_DatosMarketing[Compras_CATÁLOGO] > 0 )
+)
+MEASURE 'DAX'[Total Clientes Descuento] = 
+CALCULATE (
+    COUNT ( FACT_DatosMarketing[Compras_Premium] ),
+    FILTER ( FACT_DatosMarketing, FACT_DatosMarketing[Compras_Descuento] > 0 )
+)
+MEASURE 'DAX'[Total Clientes Dulces] = 
+CALCULATE (
+    COUNT ( FACT_DatosMarketing[Compras_Dulces] ),
+    FILTER ( FACT_DatosMarketing, FACT_DatosMarketing[Compras_Dulces] > 0 )
+)
+MEASURE 'DAX'[Total Clientes Fruta] = 
+CALCULATE (
+    COUNT ( FACT_DatosMarketing[Compras_Fruta] ),
+    FILTER ( FACT_DatosMarketing, FACT_DatosMarketing[Compras_Fruta] > 0 )
+)
+MEASURE 'DAX'[Total Clientes Pescado] = 
+CALCULATE (
+    COUNT ( FACT_DatosMarketing[Compras_Pescado] ),
+    FILTER ( FACT_DatosMarketing, FACT_DatosMarketing[Compras_Pescado] > 0 )
+)
+MEASURE 'DAX'[Total Clientes Premium] = 
+CALCULATE (
+    COUNT ( FACT_DatosMarketing[Compras_Premium] ),
+    FILTER ( FACT_DatosMarketing, FACT_DatosMarketing[Compras_Premium] > 0 )
+)
+MEASURE 'DAX'[Total Clientes TIENDA] = 
+CALCULATE (
+    COUNT ( FACT_DatosMarketing[Compras_TIENDA] ),
+    FILTER ( FACT_DatosMarketing, FACT_DatosMarketing[Compras_TIENDA] > 0 )
+)
+MEASURE 'DAX'[Total Clientes Vino] = 
+CALCULATE (
+    COUNT ( FACT_DatosMarketing[Compras_Vino] ),
+    FILTER ( FACT_DatosMarketing, FACT_DatosMarketing[Compras_Vino] > 0 )
+)
+MEASURE 'DAX'[Total Clientes WEB] = 
+CALCULATE (
+    COUNT ( FACT_DatosMarketing[Compras_WEB] ),
+    FILTER ( FACT_DatosMarketing, FACT_DatosMarketing[Compras_WEB] > 0 )
+)
+MEASURE 'DAX'[Total Compras Carne] = 
+SUM('FACT_DatosMarketing'[Compras_Carne])
+MEASURE 'DAX'[Total Compras descuento] = 
+SUM('FACT_DatosMarketing'[Compras_Descuento])
+MEASURE 'DAX'[Total Compras Dulces] = 
+SUM('FACT_DatosMarketing'[Compras_Dulces])
+MEASURE 'DAX'[Total Compras Fruta] = 
+SUM('FACT_DatosMarketing'[Compras_Fruta])
+MEASURE 'DAX'[Total Compras Pescado] = 
+SUM('FACT_DatosMarketing'[Compras_Pescado])
+MEASURE 'DAX'[Total Compras Premium] = 
+SUM('FACT_DatosMarketing'[Compras_Premium])
+MEASURE 'DAX'[Total Compras Productos] = 
+[Total Compras Dulces] + [Total Compras Carne] + [Total Compras Fruta] + [Total Compras Pescado] + [Total Compras Vino]
+MEASURE 'DAX'[Total Compras Vino] = 
+SUM('FACT_DatosMarketing'[Compras_Vino])
+MEASURE 'DAX'[Total Pedidos Canales Venta] = 
+([Total pedidos CATÁLOGO]+[Total pedidos TIENDA]+[Total pedidos WEB])
+MEASURE 'DAX'[Total pedidos CATÁLOGO] = 
+SUM('FACT_DatosMarketing'[Compras_CATÁLOGO])
+MEASURE 'DAX'[Total pedidos TIENDA] = 
+SUM('FACT_DatosMarketing'[Compras_TIENDA])
+MEASURE 'DAX'[Total pedidos WEB] = 
+SUM('FACT_DatosMarketing'[Compras_WEB])
+MEASURE 'DAX'[Total Quejas 2 ult años] = 
+SUM(FACT_DatosMarketing[Quejas_Ultimos2años])
+MEASURE 'DAX'[Total Visitas WEB último mes] = 
+SUM ( FACT_DatosMarketing[Visitas_WEBultmes] )
+---- MODEL MEASURES END ----
+
